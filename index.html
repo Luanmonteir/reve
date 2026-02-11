@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Uma Surpresa Especial 💕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #b6ddfa, #a3c5ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff2bdc;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px 25px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background: #fff;
+            color: #ff6f91;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #ffe4ec;
+        }
+
+        .reveal {
+            display: none;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .reveal h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .reveal span {
+            font-size: 3rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: #fff;
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh);
+            }
+
+            to {
+                transform: translateY(-10vh);
+            }
+
+           
+        }
+        video {
+                width: 100%;
+                max-width: 320px;
+                border-radius: 15px;
+                margin-top: 20px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="initial">
+        <h1>Temos algo especial para vocês 💕</h1>
+        <p>Preparem o coração…<br>essa mensagem foi feita com muito amor.</p>
+        <button onclick="revelar()">Clique para descobrir</button>
+    </div>
+
+    <div class="container reveal" id="reveal">
+        <h2>Temos mais uma surpresa 💖</h2>
+
+        <video id="videoRevelacao" controls playsinline>
+            <source src="video.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+
+        <p>Um novo amor está a caminho 👶✨</p>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+        function revelar() {
+            document.getElementById('initial').style.display = 'none';
+    
+            const reveal = document.getElementById('reveal');
+            reveal.style.display = 'block';
+    
+            criarCoracoes();
+    
+            const video = document.getElementById('videoRevelacao');
+            video.play(); // 👉 isso garante o som sem bloqueio
+        }
+    
+        function criarCoracoes() {
+            const container = document.getElementById('hearts');
+    
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+                heart.style.fontSize = (15 + Math.random() * 25) + 'px';
+                container.appendChild(heart);
+    
+                setTimeout(() => heart.remove(), 6000);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
