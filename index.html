@@ -16,11 +16,11 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #b6ddfa, #a3c5ff);
+            background: linear-gradient(135deg, #ffdda9, #a3c5ff);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff2bdc;
+            color: #654321;
             text-align: center;
         }
 
@@ -42,6 +42,7 @@
         p {
             font-size: 30px;
             margin-bottom: 30px;
+            margin-top: 60px;
         }
 
         button {
@@ -110,15 +111,24 @@
                 transform: translateY(-10vh);
             }
 
-           
+
         }
+
         video {
-                width: 100%;
-                max-width: 320px;
-                border-radius: 15px;
-                margin-top: 20px;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            }
+            width: 100%;
+            max-width: 250px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -131,34 +141,46 @@
     </div>
 
     <div class="container reveal" id="reveal">
-        <h2>Temos mais uma surpresa 💖</h2>
+        <h2>Temos uma surpresa 💖</h2>
+        <p>“Àquele que é capaz de fazer infinitamente mais do que tudo o que pedimos ou pensamos,
+            de acordo com o seu poder que atua em nós.”
+
+            (Efésios 3:20)</p>
 
         <video id="videoRevelacao" controls playsinline>
             <source src="video.mp4" type="video/mp4">
             Seu navegador não suporta vídeo.
         </video>
 
-        <p>Um novo amor está a caminho 👶✨</p>
+
+        <img src="foto.jpeg" alt="">7
+        <p>
+            É com muita felicidade que anunciamos que nossa família está maior.
+            Um novo amor está a caminho, trazendo ainda mais luz, união e alegria.
+        </p>
     </div>
+
+
+
 
     <div class="hearts" id="hearts"></div>
 
     <script>
         function revelar() {
             document.getElementById('initial').style.display = 'none';
-    
+
             const reveal = document.getElementById('reveal');
             reveal.style.display = 'block';
-    
+
             criarCoracoes();
-    
+
             const video = document.getElementById('videoRevelacao');
             video.play(); // 👉 isso garante o som sem bloqueio
         }
-    
+
         function criarCoracoes() {
             const container = document.getElementById('hearts');
-    
+
             for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
@@ -167,7 +189,7 @@
                 heart.style.animationDuration = (3 + Math.random() * 3) + 's';
                 heart.style.fontSize = (15 + Math.random() * 25) + 'px';
                 container.appendChild(heart);
-    
+
                 setTimeout(() => heart.remove(), 6000);
             }
         }
